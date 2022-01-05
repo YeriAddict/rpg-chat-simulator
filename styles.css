@@ -24,7 +24,7 @@ body {
 }
 
 #users-container{
-    width: 200px;
+    width: 150px;
     height: 600px;
     padding: 0;
     border: 2px solid #6A6A6A;
@@ -32,7 +32,7 @@ body {
 }
 
 #chat-container{
-    width: 200px;
+    width: 250px;
     height: 600px;
     padding: 0;
     border: 2px solid #6A6A6A;
