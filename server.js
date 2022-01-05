@@ -18,24 +18,37 @@ server.listen(3000, function(){
 });
 
 // Creating socket io event 
-io.on('connection', function(socket){
-  
+io.on('connection', function (socket) {
+
   var loggedUser;
 
-  // Handling user connection
-  socket.on('login-user', function (loggedUser) {
-    console.log(loggedUser.username + " is with us");
-    user = loggedUser;
-  });
-  
-  socket.on('disconnect', function(){
-    console.log('User left us');
+  // Handling connection event and broadcast message
+  socket.on('user-login', function (user) {
+    loggedUser = user;
+    if (loggedUser !== undefined) {
+      var serviceMessage = {
+        text: loggedUser.username + " is with us",
+        type: 'login'
+      };
+      socket.broadcast.emit('service-message', serviceMessage);
+    }
   });
 
-  // Handling 'chat message' event 
+// Handling disconnection event and broadcast message
+  socket.on('disconnect', function () {
+    if (loggedUser !== undefined) {
+      console.log('user disconnected : ' + loggedUser.username);
+      var serviceMessage = {
+        text: loggedUser.username + " left us",
+        type: 'logout'
+      };
+      socket.broadcast.emit('service-message', serviceMessage);
+    }
+  });
+
+  // Sending message to all users
   socket.on('chat-message', function (message) {
-    message.username = user.username;
+    message.username = loggedUser.username;
     io.emit('chat-message', message);
-    console.log('Message de : ' + user.username);
   });
 });

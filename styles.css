@@ -4,6 +4,10 @@ body {
     background-color: #7EBEEB;
 }
 
+#map, #boy, #girl {
+    display: none;
+}
+
 #table {
     margin: auto;
     border-collapse: collapse;
@@ -54,17 +58,30 @@ body {
 }
 
 #chat-messages > li:nth-child(odd) { 
-    background: #FCAE1E; 
+    background: #F5DCB7; 
     font-size:14px;
     color: black;
     overflow-wrap:break-word;
+    font-family: Arial, sans-serif;
 }
 
 #chat-messages > li:nth-child(even) { 
-    background: #FF8040; 
+    background: #F4E6D9; 
     font-size:14px;
     color: black;
     overflow-wrap:break-word;
+    font-family: Arial, sans-serif;
+}
+
+td#chat-container #chat-messages li span.username {
+    font-weight: bold;
+    font-size:14px;
+}
+
+td#chat-container #chat-messages li span.broadcast {
+    font-weight: bold;
+    font-size:14px;
+    color: red;
 }
 
 #chat-input { 
@@ -109,11 +126,7 @@ body {
     background-color: #F46200;
 }
 
-#map, #boy, #girl {
-    display: none;
-}
-
-#login-overlay {
+#login {
     width: 100%;
     height: 100%;
     position: absolute;

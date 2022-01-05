@@ -10,10 +10,10 @@
     </head>
 
     <body>
-        <div id='login-overlay'>
+        <section id='login'>
           <div id='login-container'>
-            <form id='login-form'>
-              <input id="login-input" type='text' placeholder='Enter name' name='login' autofocus/>
+            <form action="">
+              <input id="login-input" type='text' placeholder='Enter name' name='login' autofocus autocomplete="off"/>
               <button id='login-button'>Start</button>
               <input type="radio" id="checkbox-boy" name="character-choice" value="1">
               <label for="checkbox-boy">Boy</label>
@@ -21,7 +21,7 @@
               <label for="checkbox-girl">Girl</label>
             </form>
           </div>
-        </div>
+        </section>
 
         <div id = container>
             <table cellspacing="0" id = table>
@@ -38,7 +38,7 @@
                   <td id='chat-container'>
                     <ul id="chat-messages"></ul>
                     <form id="chat-form" action="">
-                      <input id="chat-input" type='text' placeholder='Write here' name='chat'/>
+                      <input id="chat-input" type='text' placeholder='Write here' name='chat' autocomplete="off"/>
                       <button id="chat-button">Send Message</button>
                     </form>
                   </td>
