@@ -1,3 +1,6 @@
+// Loading current date variable
+var date = new Date().toLocaleString();
+
 // Loading socket variable
 var socket = io();
 
@@ -34,10 +37,12 @@ $('#chat-form').submit(function (e) {
 
 // Adding messages to the chatbox
 socket.on('chat-message', function (message) {
- $('#chat-messages').append($('<li>').html('<span class="username">' + message.username + " : " + '</span>' + message.text));
+  $('#chat-messages').append($('<li>').html('<span class="date">' + "[" + date + "] " + '</span>' + '<span class="username">' + message.username + " : " + '</span>' + message.text));
+  $("#chat-messages").scrollTop($("#chat-messages")[0].scrollHeight)
 });
 
 // Adding broadcast messages to the chatbox
 socket.on('service-message', function (message) {
- $('#chat-messages').append($('<li>').html('<span class="broadcast">[MINICHAT]</span> ' + message.text));
+  $('#chat-messages').append($('<li>').html('<span class="broadcast">[MINICHAT]</span> ' + message.text));
+  $("#chat-messages").scrollTop($("#chat-messages")[0].scrollHeight)
 });
