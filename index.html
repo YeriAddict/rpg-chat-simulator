@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>MiniChat - LEANG</title>
+        <link rel="stylesheet" type="text/css" href="styles.css"/>
+        <img id="map" src="client/images/map.png" alt="Map">
+        <img id="boy" src="client/images/boy.png" alt="Boy">
+        <img id="girl" src="client/images/girl.png" alt="Girl">
+    </head>
+
+    <body>
+        <div id='login-overlay'>
+          <div id='login-container'>
+            <form id='login-form'>
+              <input id="login-input" type='text' placeholder='Enter name' name='login' autofocus/>
+              <button id='login-button'>Start</button>
+              <input type="radio" id="checkbox-boy" name="character-choice" value="1">
+              <label for="checkbox-boy">Boy</label>
+              <input type="radio" id="checkbox-girl" name="character-choice" value="2">
+              <label for="checkbox-girl">Girl</label>
+            </form>
+          </div>
+        </div>
+
+        <div id = container>
+            <table cellspacing="0" id = table>
+
+                <tr>
+                  <td id='users-container'>
+                    <ul id="users"></ul>
+                  </td>
+
+                  <td id='canvas-container'>
+                    <canvas id='canvas-map' width="800" height="600"></canvas>
+                  </td>
+
+                  <td id='chat-container'>
+                    <ul id="chat-messages"></ul>
+                    <form id="chat-form" action="">
+                      <input id="chat-input" type='text' placeholder='Write here' name='chat'/>
+                      <button id="chat-button">Send Message</button>
+                    </form>
+                  </td>
+                </tr>
+
+              </table>
+        </div>
+
+        <button id = disconnect-button>Disconnect</button>
+
+        <script src="scripts/jquery-3.6.0.js"></script>
+        <script src="/socket.io/socket.io.js"></script>
+      	<script type="text/javascript" src="index.js"></script>
+        <script type="text/javascript" src="client/client.js"></script>
+        <script type="text/javascript" src="client/button.js"></script>
+	</body>
+
+</html>

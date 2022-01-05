@@ -1,0 +1,169 @@
+body {
+    text-align: center;
+    user-select: none;
+    background-color: #7EBEEB;
+}
+
+#table {
+    margin: auto;
+    border-collapse: collapse;
+}
+
+#canvas-container{
+    border: 2px solid #6A6A6A;
+    padding: 0;
+    background-color: #857851;
+}
+
+#canvas {
+    width: 800px;
+    height: 600px;
+    margin: 0;
+    outline: none;
+    cursor: crosshair;
+}
+
+#users-container{
+    width: 200px;
+    height: 600px;
+    padding: 0;
+    border: 2px solid #6A6A6A;
+    background-color: #FEF0E2;
+}
+
+#chat-container{
+    width: 200px;
+    height: 600px;
+    padding: 0;
+    border: 2px solid #6A6A6A;
+    background-color: #FEF0E2;
+}
+
+#chat-messages { 
+    width: 100%;
+    height: 90%;
+    padding: 0;
+    margin: 0;
+    text-align: left;
+    overflow-y: scroll;
+}
+
+#chat-messages > li { 
+    list-style-type: none;
+    padding: 5px;
+}
+
+#chat-messages > li:nth-child(odd) { 
+    background: #FCAE1E; 
+    font-size:14px;
+    color: black;
+    overflow-wrap:break-word;
+}
+
+#chat-messages > li:nth-child(even) { 
+    background: #FF8040; 
+    font-size:14px;
+    color: black;
+    overflow-wrap:break-word;
+}
+
+#chat-input { 
+    box-sizing: border-box;
+    width: 100%;
+    height: 5%;
+    padding: 5px;
+}
+
+#chat-button {
+    box-sizing: border-box;
+    width: 100%;
+    height: 5%;
+    padding: 5px;
+    font-size:16px;
+    background-color: #FCAE1E;
+    color:white;
+    cursor:pointer;
+    border:none;
+}
+
+#chat-button:hover 
+{
+    background-color: #F46200;
+}
+
+#disconnect-button {
+    box-sizing: border-box;
+    width: 100px;
+    height: 50px;
+    padding: 5px;
+    font-size:16px;
+    background-color: #FCAE1E;
+    border:none;
+    color:white;
+    cursor:pointer;
+    border-radius:3px;
+}
+
+#disconnect-button:hover 
+{
+    background-color: #F46200;
+}
+
+#map, #boy, #girl {
+    display: none;
+}
+
+#login-overlay {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+  
+    background-color: rgba(49, 49, 49, 0.5);
+    z-index: 1;
+}
+
+#login-container {
+    position:relative;
+    top: 40%;
+    font-size:20px;
+    background-color: #FEF0E2;
+    border-radius: 10px;
+    padding: 10px 65px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    margin-left: 300px;
+    margin-right: 300px;
+    text-align: center;
+}
+
+#login-input {
+    font-size:16px;
+    color:black;
+    cursor:pointer;
+    border:none;
+    padding: 12px 20px;
+    border-radius:3px   
+}
+
+#login-input:hover {
+    cursor: text;
+}
+
+#login-button {
+    font-size:16px;
+    background-color: #FCAE1E;
+    color:white;
+    cursor:pointer;
+    border:none;
+    padding: 12px 20px;
+    border-radius:3px
+}
+
+#login-button:hover 
+{
+    background-color: #F46200;
+}
