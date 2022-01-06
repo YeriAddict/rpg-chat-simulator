@@ -11,6 +11,7 @@ const io = socketIO(server);
 // Handling HTTP requests
 app.use("/", express.static(__dirname + "/"));
 app.use("/", express.static(__dirname + "/client"));
+app.use("/", express.static(__dirname + "/source"));
 
 // Launching server on port 3000
 server.listen(3000, function () {
