@@ -112,6 +112,13 @@ td#chat-container #chat-messages li span.broadcast {
     color: red;
 }
 
+td#chat-container #chat-messages li.logout {
+	background: #E5A6A6;
+}
+td#chat-container #chat-messages li.login {
+	background: #A8E5A6;
+}
+
 #chat-input { 
     box-sizing: border-box;
     width: 100%;

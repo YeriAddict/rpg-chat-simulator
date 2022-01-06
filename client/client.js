@@ -49,13 +49,13 @@ socket.on('chat-message', function (message) {
 
 // Adding broadcast messages to the chatbox
 socket.on('service-message', function (message) {
-  $('#chat-messages').append($('<li>').html('<span class="broadcast">[MINICHAT]</span> ' + message.text));
+  $('#chat-messages').append($('<li class="' + message.type + '">').html('<span class="broadcast">[MINICHAT]</span> ' + message.text));
   $("#chat-messages").scrollTop($("#chat-messages")[0].scrollHeight)
 });
 
 // Handling user connection (for the users list)
 socket.on('user-login', function (user) {
-  $('#users').append($('<li>').html(user.username));
+  $('#users').append($('<li class="' + user.username + ' new">').html(user.username));
   setTimeout(function () {
     $('#users li.new').removeClass('new');
   }, 1000);
