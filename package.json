@@ -2,7 +2,7 @@
   "name": "minichat",
   "version": "1.0.0",
   "description": "MiniChat for TSE",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
     "start": "node server.js"
   },
