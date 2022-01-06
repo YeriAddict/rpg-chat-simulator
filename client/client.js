@@ -1,5 +1,4 @@
-// Loading current date variable
-var date = new Date().toLocaleString();
+var src;
 
 // Loading socket variable
 var socket = io();
@@ -9,13 +8,14 @@ $('#login form').submit(function (e) {
   e.preventDefault();
 
   var user = {
-    username : $('#login input').val().trim()
+    username : $('#login input').val().trim(),
+    gender: document.querySelectorAll('input[type="radio"]:checked').length>0? document.querySelectorAll('input[type="radio"]:checked')[0].value: null
   };
 
   if (user.username.length > 0 && user.username.length < 30) { 
     socket.emit('user-login', user, function (success) {
       if (success) {
-        $('#login').remove(); 
+        $('#login').remove(); // Loading
       }
       else {
         alert("This name is already taken");
@@ -43,6 +43,7 @@ $('#chat-input').val('');
 
 // Adding messages to the chatbox
 socket.on('chat-message', function (message) {
+  var date = new Date().toLocaleString();
   $('#chat-messages').append($('<li>').html('<span class="date">' + "[" + date + "] " + '</span>' + '<span class="username">' + message.username + " : " + '</span>' + message.text));
   $("#chat-messages").scrollTop($("#chat-messages")[0].scrollHeight)
 });
@@ -66,3 +67,4 @@ socket.on('user-logout', function (user) {
   var selector = '#users li.' + user.username;
   $(selector).remove();
 });
+

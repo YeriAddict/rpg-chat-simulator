@@ -19,8 +19,8 @@ const FACING_LEFT = 1;
 const FACING_RIGHT = 2;
 const FACING_UP = 3;
 let currentDirection = 0;
-let positionX = 0;
-let positionY = 0;
+let positionX = 382;
+let positionY = 280;
 let keyPresses = {};
 
 // Storing key presses 

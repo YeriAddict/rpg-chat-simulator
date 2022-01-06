@@ -15,9 +15,9 @@
             <form action="">
               <input id="login-input" type='text' placeholder='Enter name' name='login' autofocus autocomplete="off"/>
               <button id='login-button'>Start</button>
-              <input type="radio" id="checkbox-boy" name="character-choice" value="1">
+              <input type="radio" name="gender" id="gender_boy" value="Boy" checked>
               <label for="checkbox-boy">Boy</label>
-              <input type="radio" id="checkbox-girl" name="character-choice" value="2">
+              <input type="radio" name="gender" id="gender_girl" value="Girl">
               <label for="checkbox-girl">Girl</label>
             </form>
           </div>
@@ -51,9 +51,8 @@
 
         <script src="scripts/jquery-3.6.0.js"></script>
         <script src="/socket.io/socket.io.js"></script>
-      	<script type="text/javascript" src="index.js"></script>
+      	<script type="text/javascript" src="client/index.js"></script>
         <script type="text/javascript" src="client/client.js"></script>
-        <script type="text/javascript" src="client/button.js"></script>
 	</body>
 
 </html>

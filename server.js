@@ -34,8 +34,10 @@ io.on('connection', function (socket) {
         userIndex = i;
       }
     }
+    
+    // Adding user to the list
     if (user !== undefined && userIndex === -1) { 
-      // Adding user to the list
+      
       loggedUser = user;
       users.push(loggedUser);
       
