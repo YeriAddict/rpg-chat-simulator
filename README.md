@@ -38,7 +38,7 @@
 
 This is my MiniChat app for TSE where you can talk and interact with your classmates and teachers.
 
-<img src="images/screen.PNG" alt="Logo" width="700" height="400">
+<img src="images/screen.PNG" alt="Logo" width="900" height="400">
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -93,15 +93,15 @@ Typing this will also work :
 
 3. Enter your username and check which character you want to choose
 
-<img src="images/screen1.PNG" alt="Logo" width="700" height="400">
+<img src="images/screen1.PNG" alt="Logo" width="900" height="400">
 
 4. You will now have an assigned character and a username. You can now enjoy chatting with your classmates or teachers on the right. You can also see who is connected on the right. In the middle, your character is also free to wander around.
 
-<img src="images/screen2.PNG" alt="Logo" width="700" height="400">
+<img src="images/screen2.PNG" alt="Logo" width="900" height="400">
 
 5. If you wish to disconnect, you can click on the disconnect button 
 
-<img src="images/screen3.PNG" alt="Logo" width="700" height="400">
+<img src="images/screen3.PNG" alt="Logo" width="900" height="400">
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
