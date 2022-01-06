@@ -95,6 +95,7 @@ io.on('connection', function (socket) {
     io.emit('chat-message', message);
   });
 
+  // Handling characters' movements
   socket.on('movement', function(data) {
     var indice = socket_id_user_map[socket.id] || -1;
     if (indice >= 0){
@@ -125,6 +126,7 @@ io.on('connection', function (socket) {
   }
 });
 
+// Refreshing
 setInterval(function() {
   io.sockets.emit('state', users);
 }, 1000 / 60);

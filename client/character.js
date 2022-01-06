@@ -1,3 +1,6 @@
+// Loading socket variable
+var socket = io();
+
 // Loading Canvas and images
 let canvas = document.getElementById("canvas-map");
 let context = canvas.getContext("2d");
@@ -18,14 +21,22 @@ let positionX = 382;
 let positionY = 280;
 let keyPresses = {};
 
-var socket = io();
-
-var movement = {
+let movement = {
   up: false,
   down: false,
   left: false,
   right: false
 }
+
+// Function allowing to draw the characters with the only changing values 
+function drawCharacter(img, sx, sy, dx, dy, color) {
+  context.font = '16px Arial sans-serif';
+  context.fillStyle = color;
+  context.textAlign = "center";
+  context.drawImage(img, sx, sy, S_WIDTH, S_HEIGHT, dx, dy, D_WIDTH, D_HEIGHT);
+}
+
+// Handling keyboard buttons
 document.addEventListener('keydown', function(event) {
   
   switch (event.keyCode) {
@@ -65,23 +76,21 @@ setInterval(function() {
   socket.emit('movement', movement);
 }, 1000 / 60);
 
-// Function allowing to draw the characters with the only changing values 
-function drawCharacter(img, sx, sy, dx, dy) {
-  context.drawImage(img, sx, sy, S_WIDTH, S_HEIGHT, dx, dy, D_WIDTH, D_HEIGHT);
-}
 
+// Drawing characters for each user
 socket.on('state', function(users) {
   console.log('here')
   context.drawImage(img_map, 0, 0, 800, 600);
   for (var id in users) {
     var player = users[id];
     if (player.gender == "Boy"){
-      drawCharacter(img_boy, 0, STATE * player.direction, player.x, player.y)
+      drawCharacter(img_boy, 0, STATE * player.direction, player.x, player.y, player.color)
+      context.fillText(player.username, player.x+14, player.y);
     }
     else{
-      drawCharacter(img_girl, 0, STATE * player.direction, player.x, player.y)
+      drawCharacter(img_girl, 0, STATE * player.direction, player.x, player.y, player.color)
+      context.fillText(player.username, player.x+14, player.y);
     }
-    
   }
 });
 
@@ -95,6 +104,7 @@ function keyUpListener(event) {
   keyPresses[event.key] = false;
 }
 
+// Loading map canva
 window.onload = function() {
   context.drawImage(img_map, 0, 0, 800, 600);
 }

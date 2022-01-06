@@ -1,7 +1,15 @@
-var src;
-
 // Loading socket variable
 var socket = io();
+
+// Function returning a random hexadecimal code 
+function getRandomColor() {
+  var letters = '0123456789ABCDEF';
+  var color = '#';
+  for (var i = 0; i < 6; i++) {
+    color += letters[Math.floor(Math.random() * 16)];
+  }
+  return color;
+}
 
 // Handling login input value
 $('#login form').submit(function (e) {
@@ -12,7 +20,8 @@ $('#login form').submit(function (e) {
     gender: document.querySelectorAll('input[type="radio"]:checked').length>0? document.querySelectorAll('input[type="radio"]:checked')[0].value: null,
     x: 382,
     y: 280,
-    direction: 0
+    direction: 0,
+    color: getRandomColor()
   };
 
   if (user.username.length > 0 && user.username.length < 30) { 
@@ -70,4 +79,3 @@ socket.on('user-logout', function (user) {
   var selector = '#users li.' + user.username;
   $(selector).remove();
 });
-
