@@ -28,6 +28,10 @@ const FACING_LEFT = 1;
 const FACING_RIGHT = 2;
 const FACING_UP = 3;
 
+// Variables handling sprite sheets (which never change)
+const D_WIDTH = 32;
+const D_HEIGTH = 36;
+
 // Creating socket io event 
 io.on('connection', function (socket) {
 
@@ -101,20 +105,27 @@ io.on('connection', function (socket) {
     if (indice >= 0){
       player = users[indice-1]
       if (data.left) {
-        player.x -= MOVEMENT_SPEED;
+        if(player.x - MOVEMENT_SPEED >20){
+          player.x -= MOVEMENT_SPEED;
+        }
         player.direction = FACING_LEFT;
-  
       }
       if (data.up) {
-        player.y -= MOVEMENT_SPEED;
+        if(player.y - MOVEMENT_SPEED >20){
+          player.y -= MOVEMENT_SPEED;
+        }
         player.direction = FACING_UP;
       }
       if (data.right) {
-        player.x += MOVEMENT_SPEED;
+        if(player.x + D_WIDTH + MOVEMENT_SPEED < 780){
+          player.x += MOVEMENT_SPEED;
+        }
         player.direction = FACING_RIGHT;
       }
       if (data.down) {
-        player.y += MOVEMENT_SPEED;
+        if(player.y + D_HEIGTH + MOVEMENT_SPEED < 580){
+          player.y += MOVEMENT_SPEED;
+        }
         player.direction = FACING_DOWN;
       }
     }

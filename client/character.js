@@ -79,7 +79,6 @@ setInterval(function() {
 
 // Drawing characters for each user
 socket.on('state', function(users) {
-  console.log('here')
   context.drawImage(img_map, 0, 0, 800, 600);
   for (var id in users) {
     var player = users[id];
