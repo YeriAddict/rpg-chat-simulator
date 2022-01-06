@@ -19,6 +19,14 @@ server.listen(3000, function(){
 
 // Creating list of connected users
 var users = [];
+var socket_id_user_map = {}
+
+// Movement constants
+const MOVEMENT_SPEED = 1;
+const FACING_DOWN = 0;
+const FACING_LEFT = 1;
+const FACING_RIGHT = 2;
+const FACING_UP = 3;
 
 // Creating socket io event 
 io.on('connection', function (socket) {
@@ -40,6 +48,7 @@ io.on('connection', function (socket) {
       
       loggedUser = user;
       users.push(loggedUser);
+      socket_id_user_map[socket.id] = users.length
       
       var userServiceMessage = {
         text: "You logged in as " + loggedUser.username,
@@ -86,8 +95,36 @@ io.on('connection', function (socket) {
     io.emit('chat-message', message);
   });
 
+  socket.on('movement', function(data) {
+    var indice = socket_id_user_map[socket.id] || -1;
+    if (indice >= 0){
+      player = users[indice-1]
+      if (data.left) {
+        player.x -= MOVEMENT_SPEED;
+        player.direction = FACING_LEFT;
+  
+      }
+      if (data.up) {
+        player.y -= MOVEMENT_SPEED;
+        player.direction = FACING_UP;
+      }
+      if (data.right) {
+        player.x += MOVEMENT_SPEED;
+        player.direction = FACING_RIGHT;
+      }
+      if (data.down) {
+        player.y += MOVEMENT_SPEED;
+        player.direction = FACING_DOWN;
+      }
+    }
+  });
+
   // Sending users list to everyone
   for (i = 0; i < users.length; i++) {
     socket.emit('user-login', users[i]);
   }
 });
+
+setInterval(function() {
+  io.sockets.emit('state', users);
+}, 1000 / 60);

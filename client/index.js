@@ -13,15 +13,77 @@ const D_HEIGHT = 36;
 const STATE = 32; // Describes in which direction the character is looking
 
 // Variables handling movements and positions
-const MOVEMENT_SPEED = 1;
-const FACING_DOWN = 0;
-const FACING_LEFT = 1;
-const FACING_RIGHT = 2;
-const FACING_UP = 3;
 let currentDirection = 0;
 let positionX = 382;
 let positionY = 280;
 let keyPresses = {};
+
+var socket = io();
+
+var movement = {
+  up: false,
+  down: false,
+  left: false,
+  right: false
+}
+document.addEventListener('keydown', function(event) {
+  
+  switch (event.keyCode) {
+    case 90: // Z
+      movement.up = true;
+      break;
+    case 81: // Q
+      movement.left = true;
+      break;
+    case 68: // D
+      movement.right = true;
+      break;
+    case 83: // S
+      movement.down = true;
+      break;
+  }
+});
+document.addEventListener('keyup', function(event) {
+  switch (event.keyCode) {
+    case 90: // Z
+      movement.up = false;
+      break;
+    case 81: // Q
+      movement.left = false;
+      break;
+    case 68: // D
+      movement.right = false;
+      break;
+    case 83: // S
+      movement.down = false;
+      break;
+  }
+});
+
+socket.emit('new player');
+setInterval(function() {
+  socket.emit('movement', movement);
+}, 1000 / 60);
+
+// Function allowing to draw the characters with the only changing values 
+function drawCharacter(img, sx, sy, dx, dy) {
+  context.drawImage(img, sx, sy, S_WIDTH, S_HEIGHT, dx, dy, D_WIDTH, D_HEIGHT);
+}
+
+socket.on('state', function(users) {
+  console.log('here')
+  context.drawImage(img_map, 0, 0, 800, 600);
+  for (var id in users) {
+    var player = users[id];
+    if (player.gender == "Boy"){
+      drawCharacter(img_boy, 0, STATE * player.direction, player.x, player.y)
+    }
+    else{
+      drawCharacter(img_girl, 0, STATE * player.direction, player.x, player.y)
+    }
+    
+  }
+});
 
 // Storing key presses 
 window.addEventListener('keydown', keyDownListener, false);
@@ -33,44 +95,6 @@ function keyUpListener(event) {
   keyPresses[event.key] = false;
 }
 
-// Function allowing to draw the characters with the only changing values 
-function drawCharacter(img, sx, sy, dx, dy) {
-  context.drawImage(img_map, 0, 0, 800, 600);
-  context.drawImage(img, sx, sy, S_WIDTH, S_HEIGHT, dx, dy, D_WIDTH, D_HEIGHT);
-}
-
-// Function allowing to move the characters
-function moveCharacter(deltaX, deltaY, direction) {
-  if (positionX + deltaX > 0 && positionX + D_WIDTH + deltaX < canvas.width) {
-    positionX += deltaX;
-  }
-  if (positionY + deltaY > 0 && positionY + D_HEIGHT + deltaY < canvas.height) {
-    positionY += deltaY;
-  }
-  currentDirection = direction;
-}
-
-// Function allowing loops
-function gameLoop(){
-  context.clearRect(0, 0, canvas.width, canvas.height);
-
-  if (keyPresses.z) {
-    moveCharacter(0, -MOVEMENT_SPEED, FACING_UP);
-  } else if (keyPresses.s) {
-    moveCharacter(0, MOVEMENT_SPEED, FACING_DOWN);
-  }
-  
-  if (keyPresses.q) {
-    moveCharacter(-MOVEMENT_SPEED, 0, FACING_LEFT);
-  } else if (keyPresses.d) {
-    moveCharacter(MOVEMENT_SPEED, 0, FACING_RIGHT);
-  }
-
-  drawCharacter(img_boy, 0, STATE * currentDirection, positionX, positionY);
-  window.requestAnimationFrame(gameLoop);
-}
-
-// Loading
 window.onload = function() {
-  gameLoop();
+  context.drawImage(img_map, 0, 0, 800, 600);
 }

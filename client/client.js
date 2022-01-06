@@ -9,7 +9,10 @@ $('#login form').submit(function (e) {
 
   var user = {
     username : $('#login input').val().trim(),
-    gender: document.querySelectorAll('input[type="radio"]:checked').length>0? document.querySelectorAll('input[type="radio"]:checked')[0].value: null
+    gender: document.querySelectorAll('input[type="radio"]:checked').length>0? document.querySelectorAll('input[type="radio"]:checked')[0].value: null,
+    x: 382,
+    y: 280,
+    direction: 0
   };
 
   if (user.username.length > 0 && user.username.length < 30) { 
