@@ -1,10 +1,10 @@
 // Loading socket variable
 var socket = io();
 
-// Function returning a random hexadecimal code 
+// Function returning a random hexadecimal code
 function getRandomColor() {
-  var letters = '0123456789ABCDEF';
-  var color = '#';
+  var letters = "0123456789ABCDEF";
+  var color = "#";
   for (var i = 0; i < 6; i++) {
     color += letters[Math.floor(Math.random() * 16)];
   }
@@ -12,70 +12,90 @@ function getRandomColor() {
 }
 
 // Handling login input value
-$('#login form').submit(function (e) {
+$("#login form").submit(function (e) {
   e.preventDefault();
 
   var user = {
-    username : $('#login input').val().trim(),
-    gender: document.querySelectorAll('input[type="radio"]:checked').length>0? document.querySelectorAll('input[type="radio"]:checked')[0].value: null,
+    username: $("#login input").val().trim(),
+    gender:
+      document.querySelectorAll('input[type="radio"]:checked').length > 0
+        ? document.querySelectorAll('input[type="radio"]:checked')[0].value
+        : null,
     x: 382,
     y: 280,
     direction: 0,
-    color: getRandomColor()
+    color: getRandomColor(),
   };
 
-  if (user.username.length > 0 && user.username.length < 30) { 
-    socket.emit('user-login', user, function (success) {
+  if (user.username.length > 0 && user.username.length < 30) {
+    socket.emit("user-login", user, function (success) {
       if (success) {
-        $('#login').remove(); // Loading
-      }
-      else {
+        $("#login").remove(); // Loading
+      } else {
         alert("This name is already taken");
       }
     });
-  }
-  else {
+  } else {
     alert("Enter a name between 0 and 30 characters");
   }
 });
 
 // Handling chat input value
-$('#chat-form').submit(function (e) {
+$("#chat-form").submit(function (e) {
   e.preventDefault();
 
   var message = {
-    text : $('#chat-input').val()
+    text: $("#chat-input").val(),
   };
 
-$('#chat-input').val('');
-  if (message.text.trim().length !== 0) { 
-    socket.emit('chat-message', message);
+  $("#chat-input").val("");
+  if (message.text.trim().length !== 0) {
+    socket.emit("chat-message", message);
   }
 });
 
 // Adding messages to the chatbox
-socket.on('chat-message', function (message) {
+socket.on("chat-message", function (message) {
   var date = new Date().toLocaleString();
-  $('#chat-messages').append($('<li>').html('<span class="date">' + "[" + date + "] " + '</span>' + '<span class="username">' + message.username + " : " + '</span>' + message.text));
-  $("#chat-messages").scrollTop($("#chat-messages")[0].scrollHeight)
+  $("#chat-messages").append(
+    $("<li>").html(
+      '<span class="date">' +
+        "[" +
+        date +
+        "] " +
+        "</span>" +
+        '<span class="username">' +
+        message.username +
+        " : " +
+        "</span>" +
+        message.text
+    )
+  );
+  $("#chat-messages").scrollTop($("#chat-messages")[0].scrollHeight);
 });
 
 // Adding broadcast messages to the chatbox
-socket.on('service-message', function (message) {
-  $('#chat-messages').append($('<li class="' + message.type + '">').html('<span class="broadcast">[MINICHAT]</span> ' + message.text));
-  $("#chat-messages").scrollTop($("#chat-messages")[0].scrollHeight)
+socket.on("service-message", function (message) {
+  $("#chat-messages").append(
+    $('<li class="' + message.type + '">').html(
+      '<span class="broadcast">[MINICHAT]</span> ' + message.text
+    )
+  );
+  $("#chat-messages").scrollTop($("#chat-messages")[0].scrollHeight);
 });
 
 // Handling user connection (for the users list)
-socket.on('user-login', function (user) {
-  $('#users').append($('<li class="' + user.username + ' new">').html(user.username));
+socket.on("user-login", function (user) {
+  $("#users").append(
+    $('<li class="' + user.username + ' new">').html(user.username)
+  );
   setTimeout(function () {
-    $('#users li.new').removeClass('new');
+    $("#users li.new").removeClass("new");
   }, 1000);
 });
 
 // Handling user disconnection (for the users list)
-socket.on('user-logout', function (user) {
-  var selector = '#users li.' + user.username;
+socket.on("user-logout", function (user) {
+  var selector = "#users li." + user.username;
   $(selector).remove();
 });
