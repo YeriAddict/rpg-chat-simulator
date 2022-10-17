@@ -95,7 +95,7 @@ Typing this will also work :
 
 <img src="images/screen1.PNG" alt="Logo" width="900" height="400">
 
-4. You will now have an assigned character and a username. You can now enjoy chatting with your classmates or teachers on the right. You can also see who is connected on the right. In the middle, your character is also free to wander around.
+4. You will now have an assigned character and a username. You can now enjoy chatting with your classmates or teachers on the right. You can also see who is connected on the left. In the middle, your character is also free to wander around.
 
 <img src="images/screen2.PNG" alt="Logo" width="900" height="400">
 
