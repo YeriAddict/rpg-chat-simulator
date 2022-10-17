@@ -1,7 +1,7 @@
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
-  <a href="https://code.telecomste.fr/leang.denis/minichat">
+  <a href="https://github.com/YeriAddict/MiniChat">
     <img src="images/logo.PNG" alt="Logo" width="250" height="150">
   </a>
 
@@ -56,7 +56,7 @@ This is my MiniChat app for TSE where you can talk and interact with your classm
 
 ### Prerequisites
 
-Clone the repository with HTTPS or SSH
+Clone the repository with SSH or HTTPS
    ```sh
    git clone git@github.com:YeriAddict/MiniChat.git
    ```
