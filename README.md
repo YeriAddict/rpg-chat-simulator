@@ -1,4 +1,4 @@
-# Java Calculator - LEANG Denis
+# MiniChat - LEANG Denis
 
 <!-- PROJECT LOGO -->
 <br />
