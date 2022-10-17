@@ -1,11 +1,11 @@
+# Java Calculator - LEANG Denis
+
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
   <a href="https://github.com/YeriAddict/MiniChat">
     <img src="images/logo.PNG" alt="Logo" width="250" height="150">
   </a>
-
-  <h3 align="center">MiniChat - LEANG</h3>
 
 </div>
 
