@@ -1,9 +1,9 @@
-# MiniChat - LEANG Denis
+# RPG Chat Simulator
 
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
-  <a href="https://github.com/YeriAddict/MiniChat">
+  <a href="https://github.com/YeriAddict/rpg-chat-simulator">
     <img src="images/logo.PNG" alt="Logo" width="250" height="150">
   </a>
 
@@ -109,7 +109,5 @@ Typing this will also work :
 ## Contact
 
 LEANG Denis - denis.leang@telecom-st-etienne.fr 
-
-Link: [https://github.com/YeriAddict/MiniChat](https://github.com/YeriAddict/MiniChat)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
